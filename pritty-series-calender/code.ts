@@ -61,10 +61,12 @@ function writeDate(calender, sheet) {
   Logger.log(eventKeyMap.length);
 
   const createDescription = (
+    timestamp: string,
     description: string,
     writeName: string,
   ): string => {
-    return `${description}\n${writeName}ちゃんが教えてくれたよ！ありがとう！`;
+    var df: string = Utilities.formatDate(new Date(timestamp), 'Asia/Tokyo', 'yyyy年MM月dd日HH時mm分');
+    return `${description}\n\n${df}に${writeName}ちゃんが教えてくれたよ！ありがとう！`;
   };
 
   const data = sheet.getDataRange().getValues();
@@ -72,10 +74,17 @@ function writeDate(calender, sheet) {
     const row = data[i];
     if (row[eventKeyMap.EventID] === "") {
       const startDatetime = new Date(row[eventKeyMap.StartDateTime]);
-      const endDateTime = new Date(row[eventKeyMap.EndDateTime]);
+      let endDateTime;
+      if (row[eventKeyMap.EndDateTime]) {
+        endDateTime = new Date(row[eventKeyMap.EndDateTime]);
+      } else {
+        endDateTime = startDatetime;
+        data[i][eventKeyMap.EndDateTime] = startDatetime;
+      }
 
       const option = {
         description: createDescription(
+          row[eventKeyMap.TimeStamp],
           row[eventKeyMap.Description],
           row[eventKeyMap.WriterName],
         ),
@@ -93,6 +102,8 @@ function writeDate(calender, sheet) {
 
   // show ref: https://developers.google.com/apps-script/reference/spreadsheet/sheet#getrangerow-column-numrows-numcolumns
   // FIXME: it's all update, so bat performance
-  sheet.getRange(1, 1, data.length, Object.keys(eventKeyMap).length).setValues(data);
+  sheet
+    .getRange(1, 1, data.length, Object.keys(eventKeyMap).length)
+    .setValues(data);
   Logger.log("Finish Write Events");
 }
