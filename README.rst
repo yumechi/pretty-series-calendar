@@ -12,14 +12,14 @@ pretty-series-calendar
 カレンダーURL
 ========
 
-`<googleカレンダー> https://calendar.google.com/calendar/embed?src=gt2nd19jdaeosll6d2v4rn04lk%40group.calendar.google.com&ctz=Asia%2FTokyo`_
+`googleカレンダー <https://calendar.google.com/calendar/embed?src=gt2nd19jdaeosll6d2v4rn04lk%40group.calendar.google.com&ctz=Asia%2FTokyo>`_
 
 登録用フォーム
 ========
 
-`<こちらのFromから> https://docs.google.com/forms/d/e/1FAIpQLSfwjYbaSxWsrcO38-e9Kpq51zPAbFVNBIegczzDmRWwzTaWyw/viewform`_
+`こちらのFromから <https://docs.google.com/forms/d/e/1FAIpQLSfwjYbaSxWsrcO38-e9Kpq51zPAbFVNBIegczzDmRWwzTaWyw/viewform>`_
 
 何かあったときの連絡先
 ========
 
-`<twitter: __@yumechi> https://twitter.com/__yumechi`_ まで
+`twitter: __@yumechi <https://twitter.com/__yumechi>`_ まで
