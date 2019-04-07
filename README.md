@@ -1,2 +1,0 @@
-# pretty-series-calendar
-プリティーシリーズのカレンダー
