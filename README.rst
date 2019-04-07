@@ -7,7 +7,9 @@ pretty-series-calendar
 
 プリティーシリーズの情報を集めていくカレンダーです。
 
-今は手動入力のみ有効。
+ここにはGoogle Spread Sheet -> Google Calendarの連携用スクリプトがおいてあります。
+
+各種リンクは下記に。
 
 カレンダーURL
 ========
