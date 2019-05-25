@@ -1,38 +1,18 @@
+import { CalendarUtil, envProperty } from './util';
+
 /** Calender name */
-let CALENDER_KEY = "PRITTY_CALENDER_NAME";
+const CALENDER_KEY = "PRITTY_CALENDER_NAME";
 
 /**
  * execution point
  */
 function main() {
-  const calander = getCalender(envProperty(CALENDER_KEY));
-  const sheet = SpreadsheetApp.getActiveSheet();
+  const calander: GoogleAppsScript.CalendarApp.Calendar = CalendarUtil.getCalendar(
+    envProperty(CALENDER_KEY),
+  );
+  const sheet: GoogleAppsScript.Spreadsheet.Sheet = SpreadsheetApp.getActiveSheet();
 
   writeDate(calander, sheet);
-}
-
-/**
- * @param calender_name
- * @returns Calender, first matching by name
- */
-function getCalender(calender_name: string) {
-  return getSingleCalenderByName(calender_name);
-}
-
-/**
- * @param key
- * @returns PropertyString, if not find key then return ''
- */
-function envProperty(key: string): string {
-  return PropertiesService.getScriptProperties().getProperty(key);
-}
-
-/**
- * @param name
- * @returns Calender, first matching by name
- */
-function getSingleCalenderByName(name: string) {
-  return CalendarApp.getCalendarsByName(name)[0];
 }
 
 /**
@@ -43,7 +23,10 @@ function getSingleCalenderByName(name: string) {
  * if EventID not fill, script create Event and fill EventID
  * @returns Calender, first matching by name
  */
-function writeDate(calender, sheet) {
+function writeDate(
+  calender: GoogleAppsScript.CalendarApp.Calendar,
+  sheet: GoogleAppsScript.Spreadsheet.Sheet,
+): void {
   if (!sheet) {
     Logger.log("sheet is null, please check user Sheet");
     return;
@@ -65,18 +48,22 @@ function writeDate(calender, sheet) {
     description: string,
     writeName: string,
   ): string => {
-    var df: string = Utilities.formatDate(new Date(timestamp), 'Asia/Tokyo', 'yyyy年MM月dd日HH時mm分');
+    const df: string = Utilities.formatDate(
+      new Date(timestamp),
+      "Asia/Tokyo",
+      "yyyy年MM月dd日HH時mm分",
+    );
     return `${description}\n\n${df}に${writeName}ちゃんが教えてくれたよ！ありがとう！`;
   };
 
-  const data = sheet.getDataRange().getValues();
+  const data: Object[][] = sheet.getDataRange().getValues();
   for (let i = 1; i < data.length; i++) {
-    const row = data[i];
+    const row: Object[] = data[i];
     if (row[eventKeyMap.EventID] === "") {
-      const startDatetime = new Date(row[eventKeyMap.StartDateTime]);
+      const startDatetime = new Date(row[eventKeyMap.StartDateTime] as string);
       let endDateTime;
       if (row[eventKeyMap.EndDateTime]) {
-        endDateTime = new Date(row[eventKeyMap.EndDateTime]);
+        endDateTime = new Date(row[eventKeyMap.EndDateTime] as string);
       } else {
         endDateTime = startDatetime;
         data[i][eventKeyMap.EndDateTime] = startDatetime;
@@ -84,13 +71,13 @@ function writeDate(calender, sheet) {
 
       const option = {
         description: createDescription(
-          row[eventKeyMap.TimeStamp],
-          row[eventKeyMap.Description],
-          row[eventKeyMap.WriterName],
+          row[eventKeyMap.TimeStamp] as string,
+          row[eventKeyMap.Description] as string,
+          row[eventKeyMap.WriterName] as string,
         ),
       };
       const event = calender.createEvent(
-        row[eventKeyMap.EventName],
+        row[eventKeyMap.EventName] as string,
         startDatetime,
         endDateTime,
         option,
