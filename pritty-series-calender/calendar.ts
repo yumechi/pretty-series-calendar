@@ -8,7 +8,7 @@ const CALENDER_KEY = "PRITTY_CALENDER_NAME";
  */
 function main() {
   const calander: GoogleAppsScript.CalendarApp.Calendar = CalendarUtil.getCalendar(
-    envProperty(CALENDER_KEY),
+    envProperty(CALENDER_KEY)
   );
   const sheet: GoogleAppsScript.Spreadsheet.Sheet = SpreadsheetApp.getActiveSheet();
 
@@ -25,7 +25,7 @@ function main() {
  */
 function writeDate(
   calender: GoogleAppsScript.CalendarApp.Calendar,
-  sheet: GoogleAppsScript.Spreadsheet.Sheet,
+  sheet: GoogleAppsScript.Spreadsheet.Sheet
 ): void {
   if (!sheet) {
     Logger.log("sheet is null, please check user Sheet");
@@ -46,12 +46,12 @@ function writeDate(
   const createDescription = (
     timestamp: string,
     description: string,
-    writeName: string,
+    writeName: string
   ): string => {
     const df: string = Utilities.formatDate(
       new Date(timestamp),
       "Asia/Tokyo",
-      "yyyy年MM月dd日HH時mm分",
+      "yyyy年MM月dd日HH時mm分"
     );
     return `${description}\n\n${df}に${writeName}ちゃんが教えてくれたよ！ありがとう！`;
   };
@@ -73,14 +73,14 @@ function writeDate(
         description: createDescription(
           row[eventKeyMap.TimeStamp] as string,
           row[eventKeyMap.Description] as string,
-          row[eventKeyMap.WriterName] as string,
+          row[eventKeyMap.WriterName] as string
         ),
       };
       const event = calender.createEvent(
         row[eventKeyMap.EventName] as string,
         startDatetime,
         endDateTime,
-        option,
+        option
       );
       data[i][eventKeyMap.EventID] = event.getId();
       Logger.log(`Write Event: ${row[eventKeyMap.EventName]}`);

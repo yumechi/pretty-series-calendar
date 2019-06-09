@@ -6,8 +6,8 @@ export class CalendarUtil {
    * @param calender_name
    * @returns Calender, first matching by name
    */
-  public static getCalendar = (
-    calender_name: string,
+  static getCalendar = (
+    calender_name: string
   ): GoogleAppsScript.CalendarApp.Calendar => {
     return CalendarUtil.getSingleCalendarByName(calender_name);
   }
@@ -17,7 +17,7 @@ export class CalendarUtil {
    * @returns Calender, first matching by name
    */
   private static getSingleCalendarByName = (
-    name: string,
+    name: string
   ): GoogleAppsScript.CalendarApp.Calendar => {
     return CalendarApp.getCalendarsByName(name)[0];
   }

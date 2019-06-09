@@ -15,19 +15,19 @@ function createHeader() {
 // ref: https://qiita.com/n0bisuke/items/a31a99232e50461eb00f
 // ref: https://qiita.com/nkgr/items/610c9e09dca06338c5f1
 export class RequestHttp {
-  public static get = (url: string) => {
+  static get = (url: string) => {
     return RequestHttp.request(url, "get", {});
   }
 
-  public static post = (url: string, data: {}) => {
+  static post = (url: string, data: {}) => {
     return RequestHttp.request(url, "post", data);
   }
 
-  public static put = (url: string, data: {}) => {
+  static put = (url: string, data: {}) => {
     return RequestHttp.request(url, "put", data);
   }
 
-  public static delete = (url: string) => {
+  static delete = (url: string) => {
     return RequestHttp.request(url, "delete", {});
   }
 
@@ -41,11 +41,11 @@ export class RequestHttp {
     Logger.log(url);
     const req: GoogleAppsScript.URL_Fetch.HTTPResponse = UrlFetchApp.fetch(
       url,
-      options,
+      options
     );
     if (req.getResponseCode() >= 300) {
       Logger.log(
-        `Error: status=${req.getResponseCode()} body=${req.getContentText()}`,
+        `Error: status=${req.getResponseCode()} body=${req.getContentText()}`
       );
     }
     return req;

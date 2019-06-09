@@ -20,7 +20,7 @@ function testStatus(): void {
   const curerent_datetime = Utilities.formatDate(
     new Date(),
     "JST",
-    "yyyy/MM/dd HH:mm:ss",
+    "yyyy/MM/dd HH:mm:ss"
   );
   createStatus(`てすとだよー [GASから ${curerent_datetime}]`);
 }
