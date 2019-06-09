@@ -1,0 +1,34 @@
+{
+  "author": "yumechi",
+  "bugs": {
+    "url": "https://github.com/yumechi/pretty-series-calendar/issues"
+  },
+  "dependencies": {
+    "gts": "^1.0.0",
+    "tslint": "^5.16.0"
+  },
+  "description": "pretty series calendar on google calendar",
+  "devDependencies": {
+    "gts": "^1.0.0",
+    "typescript": "~3.4.0"
+  },
+  "homepage": "https://github.com/yumechi/pretty-series-calendar#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "name": "pretty-series-calendar",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yumechi/pretty-series-calendar.git"
+  },
+  "scripts": {
+    "check": "gts check",
+    "clean": "gts clean",
+    "compile": "tsc -p .",
+    "fix": "gts fix",
+    "posttest": "npm run check",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}
