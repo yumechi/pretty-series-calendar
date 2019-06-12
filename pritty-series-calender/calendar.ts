@@ -1,14 +1,14 @@
 import { CalendarUtil, envProperty } from './util';
 
-/** Calender name */
-const CALENDER_KEY = "PRITTY_CALENDER_NAME";
+/** calendar name */
+const CALENDAR_KEY = "PRITTY_calendar_NAME";
 
 /**
  * execution point
  */
 function main() {
   const calander: GoogleAppsScript.Calendar.Calendar = CalendarUtil.getCalendar(
-    envProperty(CALENDER_KEY)
+    envProperty(CALENDAR_KEY)
   );
   const sheet: GoogleAppsScript.Spreadsheet.Sheet = SpreadsheetApp.getActiveSheet();
 
@@ -16,15 +16,15 @@ function main() {
 }
 
 /**
- * @param calender
+ * @param calendar
  * @param sheet
- * calender format
+ * calendar format
  * `TimeStamp, EventName, StartDateTime, EndDateTime, Description, WriterName, EventID`
  * if EventID not fill, script create Event and fill EventID
- * @returns Calender, first matching by name
+ * @returns calendar, first matching by name
  */
 function writeDate(
-  calender: GoogleAppsScript.Calendar.Calendar,
+  calendar: GoogleAppsScript.Calendar.Calendar,
   sheet: GoogleAppsScript.Spreadsheet.Sheet
 ): void {
   if (!sheet) {
@@ -76,7 +76,7 @@ function writeDate(
           row[eventKeyMap.WriterName] as string
         ),
       };
-      const event = calender.createEvent(
+      const event = calendar.createEvent(
         row[eventKeyMap.EventName] as string,
         startDatetime,
         endDateTime,
