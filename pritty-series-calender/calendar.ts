@@ -7,7 +7,7 @@ const CALENDER_KEY = "PRITTY_CALENDER_NAME";
  * execution point
  */
 function main() {
-  const calander: GoogleAppsScript.CalendarApp.Calendar = CalendarUtil.getCalendar(
+  const calander: GoogleAppsScript.Calendar.Calendar = CalendarUtil.getCalendar(
     envProperty(CALENDER_KEY)
   );
   const sheet: GoogleAppsScript.Spreadsheet.Sheet = SpreadsheetApp.getActiveSheet();
@@ -24,7 +24,7 @@ function main() {
  * @returns Calender, first matching by name
  */
 function writeDate(
-  calender: GoogleAppsScript.CalendarApp.Calendar,
+  calender: GoogleAppsScript.Calendar.Calendar,
   sheet: GoogleAppsScript.Spreadsheet.Sheet
 ): void {
   if (!sheet) {
