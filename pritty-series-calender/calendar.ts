@@ -1,7 +1,7 @@
 import { CalendarUtil, envProperty } from './util';
 
 /** calendar name */
-const CALENDAR_KEY = "PRITTY_calendar_NAME";
+const CALENDAR_KEY = 'PRITTY_calendar_NAME';
 
 /**
  * execution point
@@ -28,7 +28,7 @@ function writeDate(
   sheet: GoogleAppsScript.Spreadsheet.Sheet
 ): void {
   if (!sheet) {
-    Logger.log("sheet is null, please check user Sheet");
+    Logger.log('sheet is null, please check user Sheet');
     return;
   }
 
@@ -50,18 +50,18 @@ function writeDate(
   ): string => {
     const df: string = Utilities.formatDate(
       new Date(timestamp),
-      "Asia/Tokyo",
-      "yyyy年MM月dd日HH時mm分"
+      'Asia/Tokyo',
+      'yyyy年MM月dd日HH時mm分'
     );
     return `${description}\n\n${df}に${writeName}ちゃんが教えてくれたよ！ありがとう！`;
   };
 
-  const data: Object[][] = sheet.getDataRange().getValues();
+  const data = sheet.getDataRange().getValues();
   for (let i = 1; i < data.length; i++) {
-    const row: Object[] = data[i];
-    if (row[eventKeyMap.EventID] === "") {
+    const row = data[i];
+    if (row[eventKeyMap.EventID] === '') {
       const startDatetime = new Date(row[eventKeyMap.StartDateTime] as string);
-      let endDateTime;
+      let endDateTime: Date;
       if (row[eventKeyMap.EndDateTime]) {
         endDateTime = new Date(row[eventKeyMap.EndDateTime] as string);
       } else {
@@ -92,5 +92,5 @@ function writeDate(
   sheet
     .getRange(1, 1, data.length, Object.keys(eventKeyMap).length)
     .setValues(data);
-  Logger.log("Finish Write Events");
+  Logger.log('Finish Write Events');
 }

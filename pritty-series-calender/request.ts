@@ -1,13 +1,13 @@
-import { envProperty } from "./util";
+import { envProperty } from './util';
 
 /** TOKEN KEY */
-const AUTH_TOKEN_KEY = "AUTH_TOKEN";
+const AUTH_TOKEN_KEY = 'AUTH_TOKEN';
 
 function createHeader() {
   const authToken: string = envProperty(AUTH_TOKEN_KEY);
   const header = {
-    "Content-Type": "application/json",
-    "Authorization": `Bearer ${authToken}`,
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${authToken}`,
   };
   return header;
 }
@@ -16,20 +16,20 @@ function createHeader() {
 // ref: https://qiita.com/nkgr/items/610c9e09dca06338c5f1
 export class RequestHttp {
   static get = (url: string) => {
-    return RequestHttp.request(url, "get", {});
-  }
+    return RequestHttp.request(url, 'get', {});
+  };
 
   static post = (url: string, data: {}) => {
-    return RequestHttp.request(url, "post", data);
-  }
+    return RequestHttp.request(url, 'post', data);
+  };
 
   static put = (url: string, data: {}) => {
-    return RequestHttp.request(url, "put", data);
-  }
+    return RequestHttp.request(url, 'put', data);
+  };
 
   static delete = (url: string) => {
-    return RequestHttp.request(url, "delete", {});
-  }
+    return RequestHttp.request(url, 'delete', {});
+  };
 
   private static request = (url: string, method: string, stringdata: {}) => {
     const options: {} = {
@@ -49,5 +49,5 @@ export class RequestHttp {
       );
     }
     return req;
-  }
+  };
 }

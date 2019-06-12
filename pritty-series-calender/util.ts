@@ -3,14 +3,14 @@
  */
 export class CalendarUtil {
   /**
-   * @param calendar_name
+   * @param calendarName
    * @returns calendar, first matching by name
    */
   static getCalendar = (
-    calendar_name: string
+    calendarName: string
   ): GoogleAppsScript.Calendar.Calendar => {
-    return CalendarUtil.getSingleCalendarByName(calendar_name);
-  }
+    return CalendarUtil.getSingleCalendarByName(calendarName);
+  };
 
   /**
    * @param name
@@ -20,7 +20,7 @@ export class CalendarUtil {
     name: string
   ): GoogleAppsScript.Calendar.Calendar => {
     return CalendarApp.getCalendarsByName(name)[0];
-  }
+  };
 }
 
 /**

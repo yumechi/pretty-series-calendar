@@ -1,8 +1,8 @@
-import { RequestHttp } from "./request";
-import { envProperty } from "./util";
+import { RequestHttp } from './request';
+import { envProperty } from './util';
 
 /** URL KEY */
-const URL_KEY = "MASTODON_URL";
+const URL_KEY = 'MASTODON_URL';
 
 function request(resource: string, body: {}) {
   const _url = envProperty(URL_KEY) + resource;
@@ -10,22 +10,22 @@ function request(resource: string, body: {}) {
 }
 
 function createStatus(content: string) {
-  return request("statuses", {
-    visibility: "public",
+  return request('statuses', {
+    visibility: 'public',
     status: content,
   });
 }
 
 function testStatus(): void {
-  const curerent_datetime = Utilities.formatDate(
+  const curerentDatetime = Utilities.formatDate(
     new Date(),
-    "JST",
-    "yyyy/MM/dd HH:mm:ss"
+    'JST',
+    'yyyy/MM/dd HH:mm:ss'
   );
-  createStatus(`てすとだよー [GASから ${curerent_datetime}]`);
+  createStatus(`てすとだよー [GASから ${curerentDatetime}]`);
 }
 
 function testGetStatus(): void {
-  const _url = envProperty(URL_KEY) + "statuses/102156254163117961";
+  const _url = envProperty(URL_KEY) + 'statuses/102156254163117961';
   RequestHttp.get(_url);
 }
