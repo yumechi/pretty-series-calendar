@@ -1,0 +1,5 @@
+{
+  "dependencies": {},
+  "exceptionLogging": "STACKDRIVER",
+  "timeZone": "Asia/Tokyo"
+}
