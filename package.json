@@ -4,10 +4,10 @@
     "url": "https://github.com/yumechi/pretty-series-calendar/issues"
   },
   "dependencies": {
-    "@google/clasp": "^2.1.0",
+    "@google/clasp": "^2.2.1",
     "@types/google-apps-script": "0.0.53",
     "gts": "^1.0.0",
-    "tslint": "^5.16.0"
+    "tslint": "^5.18.0"
   },
   "description": "pretty series calendar on google calendar",
   "devDependencies": {
