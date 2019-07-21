@@ -1,7 +1,7 @@
 import { CalendarUtil, envProperty } from './util';
 
 /** calendar name */
-const CALENDAR_KEY = 'PRITTY_CALENDAR_NAME';
+const CALENDAR_KEY = 'PRETTY_CALENDAR_NAME';
 
 /**
  * execution point
